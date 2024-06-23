@@ -4,6 +4,31 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
 }
 
+// ref. https://zenn.dev/altiveinc/articles/separating-environments-in-flutter#android%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E5%AF%BE%E5%BF%9C
+// dart-define を入れる変数を宣言しています。
+def dartDefines = [:];
+if (project.hasProperty('dart-defines')) {
+    // カンマ区切りかつBase64でエンコードされている dart-defines をデコードして変数に格納します。
+    dartDefines = dartDefines + project.property('dart-defines')
+        .split(',')
+        .collectEntries { entry ->
+            def pair = new String(entry.decodeBase64(), 'UTF-8').split('=')
+            pair.length == 2 ? [(pair.first()): pair.last()] : [:]
+        }
+}
+
+// ref. https://zenn.dev/altiveinc/articles/separating-environments-in-flutter#firebase%E5%AF%BE%E5%BF%9C-(android)
+task selectGoogleServicesJson(type: Copy) {
+    from "src/${dartDefines.env}/google-services.json"
+    into './'
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == 'processDebugGoogleServices' || task.name == 'processReleaseGoogleServices') {
+        task.dependsOn selectGoogleServicesJson
+    }
+}
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -41,12 +66,11 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.flutter_template"
-        // You can update the following values to match your application needs.
+        applicationId "${dartDefines.appId}"
+        resValue "string", "app_name", "${dartDefines.appName}"        // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
+        minSdkVersion 29 // Android 10.0
+        targetSdkVersion 34 // Android 14.0
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }

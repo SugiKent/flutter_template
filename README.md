@@ -1,5 +1,12 @@
 # Flutter オレオレ Template
 
+## 対応バージョン
+
+Android | iOS
+--|--
+Android 10.0(API Level 29) 以上 | 17以上
+
+
 ## 技術スタック
 
 - Dart (3.2.6)
@@ -9,6 +16,16 @@
 
 ## できること
 
+### 設定
+
+- ビルド環境ごとの定数管理（環境変数ではない `dar_defines` と `lib/environment.dart` によるハードコーディング）
+- ビルド環境ごとに、アプリ名やアプリID(Bundle Identifier、Application ID)を変更
+- ビルド環境ごとの Firebase Project との接続に利用する設定ファイルの変更
+
+### 非機能
+
+- Firebase Crashlytics が使える（main.dart で catch）
+- Firebase Performance が使える（自動）
 
 実現できたものからここに追加していく
 
@@ -17,13 +34,8 @@
 
 ### 設定
 
-- ビルド設定(DebugかRelease)ごとに、アプリ名やアプリID(Bundle Identifier、Application ID)を変更
-- ビルド時に環境(DevかProd)ごとの定数管理（環境変数ではないハードコーディング）
 - dotenv の利用
-- ビルド設定(DebugかRelease)ごとの Firebase Project との接続に利用する設定ファイルの変更
 - デフォルトが日本語設定
-- Firebase Crashlytics が使える
-- Firebase Performance が使える
 - Firebase Analytics が使える
 - Firebase Analytics で、自動イベントが停止され任意のイベント送信の管理がコードでされている状態
 - Firebase RemoteConfig が使える
@@ -82,7 +94,7 @@ $ firebase apps:create ios --bundle-id sugiken.start-app --project start-app
 
 Android 設定ファイル取得
 ```bash
-$ firebase apps:sdkconfig --project start-app android -o android/app/src/debug/google-services.json
+$ firebase apps:sdkconfig --project start-app android -o android/app/src/dev/google-services.json
 ```
 
 iOS 設定ファイル取得
@@ -103,8 +115,6 @@ iOS 設定ファイル取得
 ```bash
 $ firebase apps:sdkconfig --project start-app ios -o ios/Runner/GoogleService-Info-prod.plist
 ```
-
-
 </details>
 
 
