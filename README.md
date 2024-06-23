@@ -9,16 +9,16 @@ Android 10.0(API Level 29) 以上 | 17以上
 
 ## 技術スタック
 
-- Dart (3.2.6)
-- Flutter (3.16.9)
+- Dart (3.4.3)
+- Flutter (3.22.2)
 - Firebase
-- Riverpod
+- Riverpod（未導入）
 
 ## できること
 
 ### 設定
 
-- ビルド環境ごとの定数管理（環境変数ではない `dar_defines` と `lib/environment.dart` によるハードコーディング）
+- ビルド環境ごとの定数管理（`dar_defines` と `lib/environment.dart` によるハードコーディング）
 - ビルド環境ごとに、アプリ名やアプリID(Bundle Identifier、Application ID)を変更
 - ビルド環境ごとの Firebase Project との接続に利用する設定ファイルの変更
 
@@ -39,7 +39,7 @@ Android 10.0(API Level 29) 以上 | 17以上
 - Firebase Analytics が使える
 - Firebase Analytics で、自動イベントが停止され任意のイベント送信の管理がコードでされている状態
 - Firebase RemoteConfig が使える
-- アイコンの差し替え [参考](https://zenn.dev/altiveinc/articles/separating-environments-in-flutter#app%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3%E3%82%92%E7%92%B0%E5%A2%83%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%A4%89%E3%81%88%E3%82%8B)
+- 環境ごとによるアイコンの差し替え [参考](https://zenn.dev/altiveinc/articles/separating-environments-in-flutter#app%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3%E3%82%92%E7%92%B0%E5%A2%83%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%A4%89%E3%81%88%E3%82%8B)
 
 ### 機能
 
@@ -170,7 +170,38 @@ $ flutter build appbundle --release --dart-define=env=prod --no-shrink
 
 #### VSCode
 
-TODO: 書く
+`.vscode/launch.json` を作る
+dart-defines を使うために必須の設定
+
+<details>
+<summary>`launch.json` の記述</summary>
+
+```
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug dev",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "args": ["--dart-define-from-file=dart_defines/dev.env"]
+    },
+    {
+      "name": "Debug prod",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "args": ["--dart-define-from-file=dart_defines/prod.env"]
+    }
+  ]
+}
+```
+</details>
+
+```
+
+```
 
 ### install dependencies
 
