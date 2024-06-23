@@ -51,7 +51,11 @@ android/app/signing/key.jks
 android/app/signing/signing.gradle
 
 # Firebase Settings Files
+**/ios/Runner/GoogleService-Info.plist
 ios/Runner/GoogleService-Info-dev.plist
 ios/Runner/GoogleService-Info-prod.plist
 android/app/src/debug/google-services.json
 android/app/src/release/google-services.json
+
+# Dart-Defines.xcconfig は、ビルド時に生成され、環境により内容が上書きされるので
+**/ios/Flutter/Dart-Defines.xcconfig

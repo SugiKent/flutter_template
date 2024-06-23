@@ -18,13 +18,16 @@
 ### 設定
 
 - ビルド設定(DebugかRelease)ごとに、アプリ名やアプリID(Bundle Identifier、Application ID)を変更
-- ビルド時に環境(DevかProd)ごとの定数管理（≒ 環境変数）
+- ビルド時に環境(DevかProd)ごとの定数管理（環境変数ではないハードコーディング）
+- dotenv の利用
 - ビルド設定(DebugかRelease)ごとの Firebase Project との接続に利用する設定ファイルの変更
+- デフォルトが日本語設定
 - Firebase Crashlytics が使える
+- Firebase Performance が使える
 - Firebase Analytics が使える
 - Firebase Analytics で、自動イベントが停止され任意のイベント送信の管理がコードでされている状態
 - Firebase RemoteConfig が使える
-- アイコンの差し替え
+- アイコンの差し替え [参考](https://zenn.dev/altiveinc/articles/separating-environments-in-flutter#app%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3%E3%82%92%E7%92%B0%E5%A2%83%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%A4%89%E3%81%88%E3%82%8B)
 
 ### 機能
 
@@ -107,45 +110,34 @@ $ firebase apps:sdkconfig --project start-app ios -o ios/Runner/GoogleService-In
 
 ### プロジェクト名リネーム
 
-ツールでプロジェクト名リネームできるようにしている
 
 `flutter_template` というプロジェクト名のため、適当なプロジェクト名に変更する。
 変更箇所は以下を参照( `flutter_template` を `start_app` に変更する例)
 
+1. pubspec.yaml > name を `flutter_template` から変更する
+2. Dart ファイルを `package:flutter_template/` で検索して `start_app` に一括置換
 
-1. `tools/config.ini`の編集
 
 <details>
 <summary>config.ini の意味</summary>
 
 ```ini:config.ini
-# ホーム画面のアプリ名(デバッグ・本番)
-DevAppName = Dev start_app
-ProdAppName = Prod start_app
-
-# pubspec.yaml > name のパッケージ名
-FlutterProdPackageName = start_app
-
-# iOS バンドルID(デバッグ・本番)
-IOSDebugPackageName = sugiken.start-app.dev
-IOSProdPackageName = sugiken.start-app
-
-# iOS プロファイル名
-IOSProfileName = start app
-
 # Android バンドルID
 AndroidPackageName = sugiken.start_app
 ```
 
 </details>
 
-2. リネーム実行
+### dev.env/prod.env の変更
 
-TODO: rename_project.dart の実装
+以下のファイルを変更する
 
-```bash
-$ dart tools/rename_project.dart
-```
+- dart_defines/dev.env
+- dart_defined/prod.env
+
+それぞれの値の意味はファイルに記載
+
+[【Flutter 3.19対応】Dart-define-from-fileを使って開発環境と本番環境を分ける](https://zenn.dev/altiveinc/articles/separating-environments-in-flutter) を参考に動かしている
 
 
 ### ビルドのための準備
@@ -169,6 +161,15 @@ $ flutter build appbundle --release --dart-define=env=prod --no-shrink
 #### VSCode
 
 TODO: 書く
+
+### install
+
+```sh
+$ flutter pub get
+
+# pod install
+$ cd ios; pod install --repo-update;
+```
 
 
 ---
