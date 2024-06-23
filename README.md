@@ -54,7 +54,7 @@ Android 10.0(API Level 29) 以上 | 17以上
 
 ### Firebase プロジェクト・アプリの作成
 
-CLI から作成するためのコマンドを紹介
+CLI から作成するためのコマンドを紹介  
 Firebase コンソールでポチポチして作成しても構わない
 
 <details>
@@ -121,22 +121,12 @@ $ firebase apps:sdkconfig --project start-app ios -o ios/Runner/GoogleService-In
 ### プロジェクト名リネーム
 
 
-`flutter_template` というプロジェクト名のため、適当なプロジェクト名に変更する。
+`flutter_template` というプロジェクト名のため、適当なプロジェクト名に変更する。  
 変更箇所は以下を参照( `flutter_template` を `start_app` に変更する例)
 
 1. pubspec.yaml > name を `flutter_template` から変更する
 2. Dart ファイルを `package:flutter_template/` で検索して `start_app` に一括置換
 
-
-<details>
-<summary>config.ini の意味</summary>
-
-```ini:config.ini
-# Android バンドルID
-AndroidPackageName = sugiken.start_app
-```
-
-</details>
 
 ### dev.env/prod.env の変更
 
@@ -150,7 +140,7 @@ AndroidPackageName = sugiken.start_app
 [【Flutter 3.19対応】Dart-define-from-fileを使って開発環境と本番環境を分ける](https://zenn.dev/altiveinc/articles/separating-environments-in-flutter) を参考に動かしている
 
 
-### ビルドのための準備
+### デバッグ/ビルドのための準備
 
 #### コマンドラインでビルドする場合
 
@@ -170,13 +160,13 @@ $ flutter build appbundle --release --dart-define=env=prod --no-shrink
 
 #### VSCode
 
-`.vscode/launch.json` を作る
+`.vscode/launch.json` を作る  
 dart-defines を使うために必須の設定
 
 <details>
 <summary>`launch.json` の記述</summary>
 
-```
+```json
 {
   "version": "0.2.0",
   "configurations": [
@@ -199,9 +189,6 @@ dart-defines を使うために必須の設定
 ```
 </details>
 
-```
-
-```
 
 ### install dependencies
 
@@ -222,9 +209,10 @@ $ cd ios; pod install --repo-update;cd ../;
 
 ### リリースビルドのための設定
 
+
+Android リリースビルドに必要なファイル  
 TODO: それぞれのファイルの作り方や役割を調査して追記
 
-Android リリースビルドに必要なファイル
 * android/app/signing/key.jks
 * android/app/signing/signing.gradle
 
