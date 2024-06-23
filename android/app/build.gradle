@@ -48,44 +48,37 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.example.flutter_template"
-    compileSdkVersion flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    namespace = "com.example.flutter_template"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     defaultConfig {
         applicationId "${dartDefines.appId}"
-        resValue "string", "app_name", "${dartDefines.appName}"        // You can update the following values to match your application needs.
+        // ref. https://zenn.dev/altiveinc/articles/separating-environments-in-flutter#defaultconfig-%E3%81%A7%E3%82%A2%E3%83%97%E3%83%AAid%E3%81%A8%E3%82%A2%E3%83%97%E3%83%AA%E5%90%8D%E3%82%92%E8%A8%AD%E5%AE%9A
+        resValue "string", "app_name", "${dartDefines.appName}"
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion 29 // Android 10.0
         targetSdkVersion 34 // Android 14.0
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        versionCode = flutterVersionCode.toInteger()
+        versionName = flutterVersionName
     }
 
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig = signingConfigs.debug
         }
     }
 }
 
 flutter {
-    source '../..'
+    source = "../.."
 }
 
-dependencies {}
+apply plugin: 'com.google.gms.google-services'

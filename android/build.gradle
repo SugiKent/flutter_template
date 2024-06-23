@@ -1,12 +1,11 @@
 buildscript {
-    ext.kotlin_version = '1.7.10'
     repositories {
         google()
         mavenCentral()
     }
-
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // https://firebase.google.com/support/release-notes/android で最新バージョンを確認
+        classpath 'com.google.gms:google-services:4.3.8' // 最新verだとエラーになる
     }
 }
 
@@ -17,12 +16,12 @@ allprojects {
     }
 }
 
-rootProject.buildDir = '../build'
+rootProject.buildDir = "../build"
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
 subprojects {
-    project.evaluationDependsOn(':app')
+    project.evaluationDependsOn(":app")
 }
 
 tasks.register("clean", Delete) {
