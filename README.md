@@ -172,13 +172,13 @@ $ flutter build appbundle --release --dart-define=env=prod --no-shrink
 
 TODO: 書く
 
-### install
+### install dependencies
 
 ```sh
 $ flutter pub get
 
 # pod install
-$ cd ios; pod install --repo-update;
+$ cd ios; pod install --repo-update;cd ../;
 ```
 
 
