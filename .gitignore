@@ -60,3 +60,5 @@ android/app/src/release/google-services.json
 
 # Dart-Defines.xcconfig は、ビルド時に生成され、環境により内容が上書きされるので
 **/ios/Flutter/Dart-Defines.xcconfig
+
+.env

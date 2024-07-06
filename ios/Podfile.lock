@@ -12,11 +12,11 @@ PODS:
   - Firebase/Performance (10.27.0):
     - Firebase/CoreOnly
     - FirebasePerformance (~> 10.27.0)
-  - firebase_analytics (11.0.1):
+  - firebase_analytics (11.1.0):
     - Firebase/Analytics (= 10.27.0)
     - firebase_core
     - Flutter
-  - firebase_core (3.1.0):
+  - firebase_core (3.1.1):
     - Firebase/CoreOnly (= 10.27.0)
     - Flutter
   - firebase_crashlytics (4.0.1):
@@ -162,6 +162,12 @@ PODS:
   - PromisesObjC (2.4.0)
   - PromisesSwift (2.4.0):
     - PromisesObjC (= 2.4.0)
+  - rate_my_app (2.2.0):
+    - Flutter
+    - FlutterMacOS
+  - shared_preferences_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
 
 DEPENDENCIES:
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
@@ -169,6 +175,8 @@ DEPENDENCIES:
   - firebase_crashlytics (from `.symlinks/plugins/firebase_crashlytics/ios`)
   - firebase_performance (from `.symlinks/plugins/firebase_performance/ios`)
   - Flutter (from `Flutter`)
+  - rate_my_app (from `.symlinks/plugins/rate_my_app/darwin`)
+  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
 
 SPEC REPOS:
   trunk:
@@ -203,11 +211,15 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_performance/ios"
   Flutter:
     :path: Flutter
+  rate_my_app:
+    :path: ".symlinks/plugins/rate_my_app/darwin"
+  shared_preferences_foundation:
+    :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
 
 SPEC CHECKSUMS:
   Firebase: 26b040b20866a55f55eb3611b9fcf3ae64816b86
-  firebase_analytics: 0627e95b73eb9e04f59167687ed5bc3f6fb50f23
-  firebase_core: 483cfad66d24d8f3c233f31db4263830c625c909
+  firebase_analytics: cc6e3ca8f159facf99fb1ceb2d81bda9cc811556
+  firebase_core: f8d0424c45e0f1e596811085fc12c638d628457c
   firebase_crashlytics: 8f04c663c8734f97c4ccbe81b8511ce7060e3b28
   firebase_performance: f45e7f18708fbe2992d1a50d608eff526c18bc4c
   FirebaseABTesting: 589bc28c0ab3e5554336895a34aa262e24276665
@@ -229,6 +241,8 @@ SPEC CHECKSUMS:
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
+  rate_my_app: cd3e1c44d12f387482698ffaf6ea9bd669a69b94
+  shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
 
 PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
 
