@@ -26,7 +26,7 @@ Android 10.0(API Level 29) 以上 | 17以上
 
 ### 非機能
 
-- Firebase Analytics が使える
+- Firebase Analytics が使える（デフォルトの Analytics は無効）
 - Firebase Analytics で、自動イベントが停止され任意のイベント送信の管理がコードでされている状態
 - Firebase Crashlytics が使える（main.dart で catch）
 - Firebase Performance が使える（自動）
@@ -236,6 +236,11 @@ signingConfigs {
   }
 }
 ```
+
+### アイコンの設定
+
+- `assets/icon/icon.png` を独自のアイコンに変更する
+- `$ fvm flutter pub run flutter_launcher_icons` を実行
 
 
 ## リリースのための準備
