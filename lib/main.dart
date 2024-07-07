@@ -5,6 +5,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'routes/generator.dart';
 import 'routes/navigator_key.dart';
@@ -19,7 +20,7 @@ void main() async {
 
     await Firebase.initializeApp();
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
-    return runApp(const MyApp());
+    return runApp(const ProviderScope(child: MyApp()));
   }, (error, stackTrace) {
     FirebaseCrashlytics.instance.recordError(error, stackTrace);
   });

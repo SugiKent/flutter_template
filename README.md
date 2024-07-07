@@ -23,6 +23,7 @@ Android 10.0(API Level 29) 以上 | 17以上
 - ビルド環境ごとの Firebase Project との接続に利用する設定ファイルの変更
 - 日本語設定がデフォルト
 - dotenv が使える
+- アイコンの設定（ `flutter_launcher_icons` を利用）
 
 ### 非機能
 
@@ -37,6 +38,7 @@ Android 10.0(API Level 29) 以上 | 17以上
 - Light/Dark Theme の指定（ユーザによる変更はカバーしない）
 - onGenerateRoute によるルーティング管理
 - レビューを促すダイアログの表示制御
+- Riverpod によるステート管理
 
 実現できたものからここに追加していく
 
@@ -45,11 +47,8 @@ Android 10.0(API Level 29) 以上 | 17以上
 
 ### 設定
 
-- 環境ごとによるアイコンの差し替え [参考](https://zenn.dev/altiveinc/articles/separating-environments-in-flutter#app%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3%E3%82%92%E7%92%B0%E5%A2%83%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%A4%89%E3%81%88%E3%82%8B)
+- GitHub Actions 経由でのリリース作業
 
-### 機能
-
-- Riverpod によるステート管理
 </details>
 
 
@@ -242,5 +241,25 @@ signingConfigs {
 - `assets/icon/icon.png` を独自のアイコンに変更する
 - `$ fvm flutter pub run flutter_launcher_icons` を実行
 
+## Riverpod について
+
+### 開発時
+
+`pub get` 後に `$ fvm flutter pub run build_runner watch` が必要
+
+これにより以下のコードがあるとき `HelloWorldRef` を自動生成してくれる
+
+```dart
+@riverpod
+String helloWorld(HelloWorldRef ref) {
+  return 'Hello World!';
+}
+```
+
+それを以下のようにして import する
+
+```dart
+part 'hello_world_provider.g.dart';
+```
 
 ## リリースのための準備

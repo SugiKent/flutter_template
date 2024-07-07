@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../views/pages/login/login_page.dart';
-import '../views/pages/root/root_page.dart';
+import '../views/pages/home/home_page.dart';
 import '../views/pages/setting/setting_page.dart';
 
 // ルーティングの定数
@@ -16,7 +16,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case Routes.rootRoute:
       return MaterialPageRoute(
-        builder: (_) => RootPage(),
+        builder: (_) => HomePage(),
       );
     case Routes.loginRoute:
       return MaterialPageRoute(
