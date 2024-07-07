@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../features/greeting/providers/hello_world_provider.dart';
-import '../../../routes/generator.dart';
-import '../../../routes/navigator_key.dart';
+import '../../../routes/router.dart';
 import '../../../services/analytics/events.dart';
 import '../../../services/environment/environment.dart';
 import '../../../services/rate_my_app/rate_my_app.dart';
@@ -36,13 +36,13 @@ class HomePage extends ConsumerWidget {
             const Text('遷移先'),
             TextButton(
               onPressed: () {
-                navigatorKey.currentState?.pushNamed(Routes.loginRoute);
+                context.goNamed(RouteNames.homeLoginName);
               },
               child: const Text('Go to Login Page'),
             ),
             TextButton(
               onPressed: () {
-                navigatorKey.currentState?.pushNamed(Routes.settingRoute);
+                context.go(Routes.settingRoute);
               },
               child: const Text('Go to Setting Page'),
             ),

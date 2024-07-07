@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../routes/generator.dart';
-import '../../../routes/navigator_key.dart';
+import '../../../routes/router.dart';
 import '../../../services/analytics/events.dart';
 
 class LoginPage extends StatelessWidget {
@@ -28,13 +28,13 @@ class LoginPage extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                navigatorKey.currentState?.pushNamed(Routes.rootRoute);
+                context.go(Routes.homeRoute);
               },
               child: const Text('Go to Home Page'),
             ),
             TextButton(
               onPressed: () {
-                navigatorKey.currentState?.pushNamed(Routes.settingRoute);
+                context.go(Routes.settingRoute);
               },
               child: const Text('Go to Setting Page'),
             )
