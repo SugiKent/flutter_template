@@ -36,7 +36,8 @@ Android 10.0(API Level 29) 以上 | 17以上
 ### アプリケーション層
 
 - Light/Dark Theme の指定（ユーザによる変更はカバーしない）
-- onGenerateRoute によるルーティング管理
+- go_router によるルーティング管理
+- BottomNavigation とスタイル修正のガイド
 - レビューを促すダイアログの表示制御
 - Riverpod によるステート管理
 
