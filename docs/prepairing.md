@@ -153,6 +153,12 @@ $ flutter pub get
 $ cd ios; pod install --repo-update;cd ../;
 ```
 
+---
+
+ここまでで Dev 環境での開発ができるはず
+
+---
+
 ## Apple Developer
 
 ### Identifier の登録
@@ -177,11 +183,4 @@ https://developer.apple.com/account/resources/identifiers/list で登録をす�
 - Xcode 側の設定（この Template を clone した場合すでに設定できているかもしれない）
 - APNs キーを Apple で作成し、Firebase に登録
 - Provisioning Profile の生成と Xcode での import
-
-
-
----
-
-ここまでで Dev 環境での開発ができるはず
-
----
+- ここまで設定したあとに実機からのアプリ削除からの再 install が必要
