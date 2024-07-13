@@ -151,6 +151,9 @@ $ flutter pub get
 
 # pod install
 $ cd ios; pod install --repo-update;cd ../;
+
+# 失敗した際に以下を実行し再度 pod install をすることで解消したケースあり
+$ flutter precache --ios
 ```
 
 ---
@@ -166,7 +169,7 @@ $ cd ios; pod install --repo-update;cd ../;
 https://developer.apple.com/account/resources/identifiers/list で登録をする
 これをしないとリリースや、いくつかの API(Push通知など) が利用できない
 
-- `dart_defines/dev.env` や `dart_defines/prod.env` で利用している `appId` の値を確認
+- `dart_defines/dev.env` や `dart_defines/prod.env` で利用している `bundleId` の値を確認
 - App IDs → App を選択
 - Bundle Id を `bundleId` と同じにして作成（Dev と Prod 同じでもいい）
 - Target Runner > Signing & Capabilities で Bundle Identifier を見つけられていることを確認（見つけられていない場合、一度 debug ビルドをすることで dart_defines が反映される）
