@@ -25,30 +25,30 @@ $ firebase login:use {メールアドレス}
 
 Firebaseプロジェクト作成
 ```bash
-$ firebase projects:create --display-name "start app" start-app
+$ firebase projects:create --display-name "start app" start-app-0831
 ```
 
 Android アプリ作成
 ```bash
-$ firebase apps:create android --package-name sugiken.start_app --project start-app
+$ firebase apps:create android --package-name bike.sugiken.start_app --project start-app-0831 # Android はハイフンが使えない
 ? What would you like to call your app? Start App # 任意のアプリの名前
 ```
 
 iOS アプリ作成
 ```bash
-$ firebase apps:create ios --bundle-id sugiken.start-app --project start-app
+$ firebase apps:create ios --bundle-id bike.sugiken.start-app --project start-app-0831 # Bundle Id にアンスコは使えない
 ? What would you like to call your app? Start App # 任意のアプリの名前
 ? Please specify your iOS app App Store ID: # 空白でも可
 ```
 
 Android 設定ファイル取得
 ```bash
-$ firebase apps:sdkconfig --project start-app android -o android/app/src/dev/google-services.json
+$ firebase apps:sdkconfig --project start-app-0831 android -o android/app/src/dev/google-services.json
 ```
 
 iOS 設定ファイル取得
 ```bash
-$ firebase apps:sdkconfig --project start-app ios -o ios/Runner/GoogleService-Info-dev.plist
+$ firebase apps:sdkconfig --project start-app-0831 ios -o ios/Runner/GoogleService-Info-dev.plist
 ```
 
 :::warn
@@ -152,6 +152,32 @@ $ flutter pub get
 # pod install
 $ cd ios; pod install --repo-update;cd ../;
 ```
+
+## Apple Developer
+
+### Identifier の登録
+
+https://developer.apple.com/account/resources/identifiers/list で登録をする
+これをしないとリリースや、いくつかの API(Push通知など) が利用できない
+
+- `dart_defines/dev.env` や `dart_defines/prod.env` で利用している `appId` の値を確認
+- App IDs → App を選択
+- Bundle Id を `bundleId` と同じにして作成（Dev と Prod 同じでもいい）
+- Target Runner > Signing & Capabilities で Bundle Identifier を見つけられていることを確認（見つけられていない場合、一度 debug ビルドをすることで dart_defines が反映される）
+
+# Push通知
+
+## iOS
+
+[参考: Flutter × FCMでプッシュ通知を実装する - Zenn](https://zenn.dev/flutteruniv_dev/articles/flutter_push_notification)
+
+
+上の記事を参考にやるべきこと
+
+- Xcode 側の設定（この Template を clone した場合すでに設定できているかもしれない）
+- APNs キーを Apple で作成し、Firebase に登録
+- Provisioning Profile の生成と Xcode での import
+
 
 
 ---

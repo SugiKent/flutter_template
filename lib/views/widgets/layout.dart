@@ -20,6 +20,7 @@ class Layout extends StatelessWidget {
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: '設定'),
         ],
         currentIndex: navigationShell.currentIndex,
+        unselectedItemColor: Colors.grey,
         onTap: (index) {
           navigationShell.goBranch(
             index,

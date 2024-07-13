@@ -1,3 +1,5 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -58,6 +60,28 @@ class HomePage extends ConsumerWidget {
             const SizedBox(height: 16),
             const Text('Riverpod 検証'),
             Text(greeting),
+            const SizedBox(height: 16),
+            const Text('Push 通知権限要求'),
+            TextButton(
+              onPressed: () async {
+                final messaging = FirebaseMessaging.instance;
+                await messaging.requestPermission(
+                  alert: true,
+                  announcement: false,
+                  badge: true,
+                  carPlay: false,
+                  criticalAlert: false,
+                  provisional: false,
+                  sound: true,
+                );
+
+                final token = await messaging.getToken();
+                if (kDebugMode) {
+                  print('🐯 FCM TOKEN: $token');
+                }
+              },
+              child: const Text('Request Push Notification Permission'),
+            ),
           ],
         ),
       ),
