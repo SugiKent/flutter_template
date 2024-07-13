@@ -187,3 +187,7 @@ https://developer.apple.com/account/resources/identifiers/list で登録をす�
   - 基本は All に開発用の Profile を設定
   - Release の際に App Store 用の Profile を設定する
 - ここまで設定したあとに実機からのアプリ削除からの再 install が必要
+
+## Android
+
+TODO: 通知カテゴリの設定

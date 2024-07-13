@@ -27,5 +27,6 @@ signingConfigs {
 }
 ```
 
-
 ## AppStore
+
+TODO: 設定方法を書く

@@ -1,6 +1,6 @@
 # 開発時の注意点
 
-## Riverpod について
+## Riverpod
 
 ### 開発時
 
