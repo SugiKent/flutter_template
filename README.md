@@ -39,6 +39,7 @@ Android 10.0(API Level 29) 以上 | 17以上
 - go_router によるルーティング管理
 - BottomNavigation とスタイル修正のガイド
 - レビューを促すダイアログの表示制御
+- Push 通知と設定ガイド
 - Riverpod によるステート管理
 
 <details>
