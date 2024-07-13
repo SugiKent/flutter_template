@@ -182,5 +182,8 @@ https://developer.apple.com/account/resources/identifiers/list で登録をす�
 
 - Xcode 側の設定（この Template を clone した場合すでに設定できているかもしれない）
 - APNs キーを Apple で作成し、Firebase に登録
+  - 開発用も本番用も同じ
 - Provisioning Profile の生成と Xcode での import
+  - 基本は All に開発用の Profile を設定
+  - Release の際に App Store 用の Profile を設定する
 - ここまで設定したあとに実機からのアプリ削除からの再 install が必要
