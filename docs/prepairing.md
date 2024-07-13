@@ -172,7 +172,8 @@ https://developer.apple.com/account/resources/identifiers/list で登録をす�
 - `dart_defines/dev.env` や `dart_defines/prod.env` で利用している `bundleId` の値を確認
 - App IDs → App を選択
 - Bundle Id を `bundleId` と同じにして作成（Dev と Prod 同じでもいい）
-- Target Runner > Signing & Capabilities で Bundle Identifier を見つけられていることを確認（見つけられていない場合、一度 debug ビルドをすることで dart_defines が反映される）
+- 一度 debug ビルドをする。これにより、dart_defines が反映されることで bundleId を Xcode に認識させる
+- Target Runner > Signing & Capabilities で Bundle Identifier を見つけられていることを確認
 
 # Push通知
 
