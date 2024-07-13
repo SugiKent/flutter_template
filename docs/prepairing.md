@@ -43,6 +43,7 @@ $ firebase apps:create ios --bundle-id bike.sugiken.start-app --project start-ap
 
 Android 設定ファイル取得
 ```bash
+$ mkdir android/app/src/release
 $ firebase apps:sdkconfig --project start-app-0831 android -o android/app/src/dev/google-services.json
 ```
 
