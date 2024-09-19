@@ -95,21 +95,27 @@ $ firebase apps:sdkconfig --project start-app ios -o ios/Runner/GoogleService-In
 [【Flutter 3.19対応】Dart-define-from-fileを使って開発環境と本番環境を分ける](https://zenn.dev/altiveinc/articles/separating-environments-in-flutter) を参考に動かしている
 
 
+## .env の作成
+
+`cp .env-template .env` で仮の .env を作成
+
+この時点ではビルドを通すためにファイルが存在していることが重要
+
 ## デバッグ/ビルドのための準備
 
 ### コマンドラインでビルドする場合
 
 ```
 # Debug
-$ flutter build ios --dart-define=env=dev
+$ fvm flutter build ios --dart-define-from-file=dart_defines/dev.env
 
 # Release(iOS)
-$ flutter build ios --release --dart-define=env=prod
+$ fvm flutter build ios --release --dart-define-from-file=dart_defines/prod
 
 # Release(Android)
-$ flutter build appbundle --release --dart-define=env=prod
+$ fvm flutter build appbundle --release --dart-define-from-file=dart_defines/prod
 or
-$ flutter build appbundle --release --dart-define=env=prod --no-shrink
+$ fvm flutter build appbundle --release --dart-define-from-file=dart_defines/prod --no-shrink
 ```
 
 
